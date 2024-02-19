@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "mirage-kitchen-sink:item/grass_fiber"
+  }
+}
