@@ -53,11 +53,12 @@ public abstract class InGameHudMixin {
             method = "render",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/client/gui/hud/InGameHud;renderStatusBars(Lnet/minecraft/client/gui/DrawContext;)V"
+                    target = "Lnet/minecraft/client/gui/hud/SubtitlesHud;render(Lnet/minecraft/client/gui/DrawContext;)V"
             )
     )
     private void renderStuff(DrawContext context, float tickDelta, CallbackInfo ci) {
-        if (this.dayCounterTimerFade > 0) {
+        if (this.dayCount != -1 && this.dayCounterTimerFade > 0) {
+            this.client.getProfiler().push("mirageDayCounter");
             float timeLeft = this.dayCounterTimerFade - tickDelta;
             int alpha = 255;
 
@@ -83,6 +84,8 @@ public abstract class InGameHudMixin {
                 );
                 context.getMatrices().pop();
             }
+
+            this.client.getProfiler().pop();
         }
     }
 
