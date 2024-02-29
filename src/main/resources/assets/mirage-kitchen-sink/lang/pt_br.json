@@ -4,5 +4,5 @@
   "item.mirage-kitchen-sink.grass_fiber": "Fibra de grama",
   "item.mirage-kitchen-sink.stone_diamond": "Diamante de pedra bruto",
   "item.mirage-kitchen-sink.deepslate_diamond": "Diamante de ardósia bruto",
-  "hud.mirage-kitchens-sink.day_counter": "Dia %s"
+  "hud.mirage-kitchens-sink.day_counter": "« Dia %s »"
 }

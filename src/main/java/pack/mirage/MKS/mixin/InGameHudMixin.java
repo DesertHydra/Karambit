@@ -38,6 +38,17 @@ public abstract class InGameHudMixin {
     @Unique
     private int dayCount;
 
+    @Unique
+    private int getDay() {
+        return (int) (this.client.world.getTimeOfDay() / 24000L);
+    }
+
+    @Inject(method = { "<init>", "clear" }, at = @At("TAIL"))
+    private void resetDayCount(CallbackInfo ci) {
+        this.dayCounterTimerFade = 0;
+        this.dayCount = -1;
+    }
+
     @Inject(
             method = "render",
             at = @At(
@@ -50,13 +61,13 @@ public abstract class InGameHudMixin {
             float timeLeft = this.dayCounterTimerFade - tickDelta;
             int alpha = 255;
 
-            if (this.dayCounterTimerFade > 20 + 100) {
-                float progress = (20.0F + 100.0F + 20.0F) - timeLeft;
-                alpha = (int) ((progress * 255.0F) / 20.0F);
+            if (this.dayCounterTimerFade > 15 + 100) {
+                float progress = (15.0F + 100.0F + 15.0F) - timeLeft;
+                alpha = (int) ((progress * 255.0F) / 15.0F);
             }
 
-            if (this.dayCounterTimerFade <= 20) {
-                alpha = (int) ((timeLeft * 255.0F) / 20.0F);
+            if (this.dayCounterTimerFade <= 15) {
+                alpha = (int) ((timeLeft * 255.0F) / 15.0F);
             }
 
             alpha = MathHelper.clamp(alpha, 0, 255);
@@ -65,7 +76,7 @@ public abstract class InGameHudMixin {
                 context.getMatrices().push();
                 context.drawCenteredTextWithShadow(
                         this.getTextRenderer(),
-                        Text.translatable("hud.mirage-kitchens-sink.day_counter", this.client.world.getTimeOfDay() / 24000L),
+                        Text.translatable("hud.mirage-kitchens-sink.day_counter", dayCount),
                         this.scaledWidth / 2,
                         this.scaledHeight - 48,
                         0x00FFFFFF | (alpha << 24 & 0xFF000000)
@@ -75,22 +86,22 @@ public abstract class InGameHudMixin {
         }
     }
 
-    // TODO - perhaps find a more optimal way of doing this
     @Inject(method = "tick()V", at = @At("TAIL"))
     private void tickStuff(CallbackInfo ci) {
+        if (this.dayCounterTimerFade > 0) {
+            this.dayCounterTimerFade--;
+        }
+
         if (this.client.world != null) {
-            if (this.dayCounterTimerFade > 0) {
-                this.dayCounterTimerFade--;
-            } else {
-                if ((int) (this.client.world.getTimeOfDay() / 24000L) != this.dayCount) {
-                    this.dayCount = (int) (this.client.world.getTimeOfDay() / 24000L);
-                    if (this.dayCount % 5 == 0) {
-                        this.dayCounterTimerFade = 20 + 100 + 20;
-                    }
+            if (this.dayCount == -1) {
+                this.dayCount = this.getDay();
+                this.dayCounterTimerFade = 15 + 100 + 15;
+            } else if (this.dayCount != this.getDay()) {
+                this.dayCount = this.getDay();
+                if (this.dayCount % 5 == 0) {
+                    this.dayCounterTimerFade = 15 + 100 + 15;
                 }
             }
-        } else {
-            this.dayCount = -1;
         }
     }
 }

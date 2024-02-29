@@ -4,5 +4,5 @@
   "item.mirage-kitchen-sink.grass_fiber": "Grass Fiber",
   "item.mirage-kitchen-sink.stone_diamond": "Raw Stone Diamond",
   "item.mirage-kitchen-sink.deepslate_diamond": "Raw Deepslate Diamond",
-  "hud.mirage-kitchens-sink.day_counter": "Day %s"
+  "hud.mirage-kitchens-sink.day_counter": "« Day %s »"
 }
