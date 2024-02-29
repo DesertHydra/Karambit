@@ -78,7 +78,7 @@ public abstract class InGameHudMixin {
                         this.getTextRenderer(),
                         Text.translatable("hud.mirage-kitchens-sink.day_counter", dayCount),
                         this.scaledWidth / 2,
-                        this.scaledHeight - 48,
+                        this.scaledHeight / 2 + 20,
                         0x00FFFFFF | (alpha << 24 & 0xFF000000)
                 );
                 context.getMatrices().pop();
