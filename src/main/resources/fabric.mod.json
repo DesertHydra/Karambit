@@ -1,26 +1,26 @@
 {
 	"schemaVersion": 1,
-	"id": "mirage-kitchen-sink",
+	"id": "hardwater",
 	"version": "${version}",
-	"name": "mirage-kitchen-sink",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "hardwater",
+	"description": "Mirage dependencies",
 	"authors": [
-		"Me!"
+		"mavrixen"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/mirage-kitchen-sink/icon.png",
+	"icon": "assets/hardwater/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"pack.mirage.MKS.MKS"
+			"deserthydra.hardwater.HardWater"
 		]
 	},
 	"mixins": [
-		"MKS.mixins.json"
+		"hardwater.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.15.6",

@@ -29,7 +29,7 @@
             },
             {
               "type": "minecraft:item",
-              "name": "mirage-kitchen-sink:stone_diamond",
+              "name": "hardwater:raw_diamond",
               "functions": [
                 {
                   "function": "minecraft:explosion_decay"
