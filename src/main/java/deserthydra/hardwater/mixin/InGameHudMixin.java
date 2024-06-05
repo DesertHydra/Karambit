@@ -77,7 +77,7 @@ public abstract class InGameHudMixin {
                 context.getMatrices().push();
                 context.drawCenteredTextWithShadow(
                         this.getTextRenderer(),
-                        Text.translatable("hud.mirage-kitchens-sink.day_counter", dayCount),
+                        Text.translatable("hud.hardwater.day_counter", dayCount),
                         this.scaledWidth / 2,
                         this.scaledHeight / 2 + 20,
                         0x00FFFFFF | (alpha << 24 & 0xFF000000)
