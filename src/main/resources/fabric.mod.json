@@ -15,9 +15,8 @@
 	"icon": "assets/hardwater/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"main": [
-			"deserthydra.hardwater.HardWater"
-		]
+		"main": ["deserthydra.hardwater.HardWater"],
+		"client": ["deserthydra.hardwater.HardWaterClient"]
 	},
 	"mixins": [
 		"hardwater.mixins.json"

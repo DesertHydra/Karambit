@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.5-SNAPSHOT'
+	id 'fabric-loom' version '1.6-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -11,10 +11,12 @@ base {
 }
 
 repositories {
+	/*
 	maven {
 		name = 'Cloth Config'
 		url = 'https://maven.shedaniel.me/'
 	}
+	*/
 }
 
 dependencies {
