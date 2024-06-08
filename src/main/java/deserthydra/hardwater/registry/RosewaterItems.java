@@ -14,7 +14,7 @@ public class RosewaterItems {
     public static final Item ROSEWATER_STEM = register("rosewater_stem", new BlockItem(RosewaterBlocks.ROSEWATER_STEM, new FabricItemSettings()));
     public static final Item ROSEWATER_HYPHAE = register("rosewater_hyphae", new BlockItem(RosewaterBlocks.ROSEWATER_HYPHAE, new FabricItemSettings()));
 
-    public static final Item STRIPPED_ROSEWATER_STEM = register("stripped_rosewater_stem", new BlockItem(RosewaterBlocks.STRIPPED_ROSEWATER_STEM, new FabricItemSettings()));
+    public static final Item STRIPPED_ROSEWATER_STEM = register("stripped_rosewater_stem.json", new BlockItem(RosewaterBlocks.STRIPPED_ROSEWATER_STEM, new FabricItemSettings()));
     public static final Item STRIPPED_ROSEWATER_HYPHAE = register("stripped_rosewater_hyphae", new BlockItem(RosewaterBlocks.STRIPPED_ROSEWATER_HYPHAE, new FabricItemSettings()));
 
     public static final Item ROSEWATER_PLANKS = register("rosewater_planks", new BlockItem(RosewaterBlocks.ROSEWATER_PLANKS, new FabricItemSettings()));

@@ -37,9 +37,7 @@ public class HardWater implements ModInitializer {
 	public void onInitialize() {
 		register();
 		CreativeTabOrder.register();
-
 		Reflection.initialize(RosewaterBlocks.class, RosewaterItems.class);
-
 
 		AttackBlockCallback.EVENT.register((player, world, hand, pos, direction) -> {
 
