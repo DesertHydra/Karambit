@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "hardwater:block/rosewater_stem",
+    "side": "hardwater:block/rosewater_stem"
+  }
+}

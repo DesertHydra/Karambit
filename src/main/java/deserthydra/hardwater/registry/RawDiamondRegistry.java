@@ -1,4 +1,4 @@
-package deserthydra.hardwater;
+package deserthydra.hardwater.registry;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
@@ -8,7 +8,8 @@ import net.minecraft.util.Identifier;
 
 import static deserthydra.hardwater.HardWater.MOD_ID;
 
-public class ItemRegistry {
+public class RawDiamondRegistry {
+
 
     public static final Item RAW_DIAMOND = new Item(new Item.Settings());
 

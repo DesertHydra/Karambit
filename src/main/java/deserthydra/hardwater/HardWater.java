@@ -1,24 +1,32 @@
 package deserthydra.hardwater;
 
+import com.google.common.reflect.Reflection;
+import deserthydra.hardwater.registry.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.AttackBlockCallback;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
+import net.minecraft.block.*;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.registry.entry.RegistryEntryList;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.ActionResult;
 
+import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static net.minecraft.block.Blocks.GRASS;
+import static net.minecraft.block.LeveledCauldronBlock.LEVEL;
+import static net.minecraft.block.LeveledCauldronBlock.decrementFluidLevel;
+import static net.minecraft.item.Items.CAULDRON;
+import static net.minecraft.item.Items.CRIMSON_PLANKS;
 import static net.minecraft.registry.tag.BlockTags.*;
-import static deserthydra.hardwater.ItemRegistry.*;
+import static deserthydra.hardwater.registry.RawDiamondRegistry.*;
 
 
 public class HardWater implements ModInitializer {
@@ -27,7 +35,11 @@ public class HardWater implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		ItemRegistry.register();
+		register();
+		CreativeTabOrder.register();
+
+		Reflection.initialize(RosewaterBlocks.class, RosewaterItems.class);
+
 
 		AttackBlockCallback.EVENT.register((player, world, hand, pos, direction) -> {
 
@@ -48,7 +60,6 @@ public class HardWater implements ModInitializer {
 
 			if (player.getStackInHand(hand).getItem() == RAW_DIAMOND && !player.isSpectator() &&
 				world.getBlockState(hitResult.getBlockPos()).isOf(Blocks.GRINDSTONE)) {
-					player.getInventory().offerOrDrop(Items.DIAMOND.getDefaultStack());
 					player.getInventory().offerOrDrop(Items.DIAMOND.getDefaultStack());
 					player.getMainHandStack().decrement(1);
 					player.playSound(SoundEvent.of(SoundEvents.BLOCK_GRINDSTONE_USE.getId()), SoundCategory.BLOCKS, 1.0F, 1.0F);
