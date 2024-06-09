@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column",
   "textures": {
-    "end": "hardwater:block/stripped_rosewater_hyphae_top",
-    "side": "hardwater:block/stripped_rosewater_hyphae"
+    "end": "hardwater:block/stripped_rosewater_stem",
+    "side": "hardwater:block/stripped_rosewater_stem"
   }
 }

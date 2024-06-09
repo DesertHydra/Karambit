@@ -15,10 +15,10 @@ public class RosewaterBlocks {
 
 
     public static final Block ROSEWATER_STEM = register("rosewater_stem", new PillarBlock(FabricBlockSettings.copyOf(CRIMSON_STEM).mapColor(MapColor.PINK)));
-    public static final Block ROSEWATER_HYPHAE = register("rosewater_hyphae", new Block(FabricBlockSettings.copyOf(CRIMSON_HYPHAE).mapColor(MapColor.PINK)));
+    public static final Block ROSEWATER_HYPHAE = register("rosewater_hyphae", new PillarBlock(FabricBlockSettings.copyOf(CRIMSON_HYPHAE).mapColor(MapColor.PINK)));
 
-    public static final Block STRIPPED_ROSEWATER_STEM = register("stripped_rosewater_stem.json", new PillarBlock(FabricBlockSettings.copyOf(STRIPPED_CRIMSON_STEM).mapColor(MapColor.PINK)));
-    public static final Block STRIPPED_ROSEWATER_HYPHAE = register("stripped_rosewater_hyphae", new Block(FabricBlockSettings.copyOf(STRIPPED_CRIMSON_HYPHAE).mapColor(MapColor.PINK)));
+    public static final Block STRIPPED_ROSEWATER_STEM = register("stripped_rosewater_stem", new PillarBlock(FabricBlockSettings.copyOf(STRIPPED_CRIMSON_STEM).mapColor(MapColor.PINK)));
+    public static final Block STRIPPED_ROSEWATER_HYPHAE = register("stripped_rosewater_hyphae", new PillarBlock(FabricBlockSettings.copyOf(STRIPPED_CRIMSON_HYPHAE).mapColor(MapColor.PINK)));
 
     public static final Block ROSEWATER_PLANKS = register("rosewater_planks", new Block(FabricBlockSettings.copyOf(CRIMSON_PLANKS)));
     public static final Block ROSEWATER_STAIRS = register("rosewater_stairs", new StairsBlock(ROSEWATER_PLANKS.getDefaultState(), FabricBlockSettings.copyOf(CRIMSON_STAIRS)));
