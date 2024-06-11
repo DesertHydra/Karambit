@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "karambit:block/stripped_rosewater_stem",
+    "side": "karambit:block/stripped_rosewater_stem"
+  }
+}

@@ -1,0 +1,8 @@
+{
+	"parent": "minecraft:block/door_bottom_right_open",
+	"textures": {
+		"top": "karambit:block/rosewater_door_top",
+		"bottom": "karambit:block/rosewater_door_bottom"
+	}
+}
+

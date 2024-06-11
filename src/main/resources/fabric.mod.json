@@ -1,8 +1,8 @@
 {
 	"schemaVersion": 1,
-	"id": "hardwater",
+	"id": "karambit",
 	"version": "${version}",
-	"name": "hardwater",
+	"name": "Karambit",
 	"description": "Mirage dependencies",
 	"authors": [
 		"mavrixen"
@@ -12,14 +12,14 @@
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/hardwater/icon.png",
+	"icon": "assets/karambit/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"main": ["deserthydra.hardwater.HardWater"],
-		"client": ["deserthydra.hardwater.HardWaterClient"]
+		"main": ["deserthydra.karambit.Karambit"],
+		"client": ["deserthydra.karambit.KarambitClient"]
 	},
 	"mixins": [
-		"hardwater.mixins.json"
+		"karambit.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.15.6",
