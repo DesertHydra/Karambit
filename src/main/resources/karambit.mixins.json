@@ -4,11 +4,7 @@
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [],
 	"client": [
-		"CauldronBehaviourMixin",
-
-		"BoatDropsMixin",
-		"BoatTypeMixin",
-		"ChestBoatDropsMixin"
+		"CauldronBehaviourMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

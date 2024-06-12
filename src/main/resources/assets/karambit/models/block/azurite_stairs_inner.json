@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "karambit:block/azurite_planks",
+    "side": "karambit:block/azurite_planks",
+    "top": "karambit:block/azurite_planks"
+  }
+}

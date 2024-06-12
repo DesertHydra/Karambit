@@ -4,6 +4,7 @@ import com.terraformersmc.terraform.sign.block.TerraformHangingSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallHangingSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
+import com.terraformersmc.terraform.wood.block.PillarLogHelper;
 import deserthydra.karambit.Karambit;
 import deserthydra.karambit.registry.KarambitRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -55,18 +56,19 @@ public class WoodBlocks {
         Identifier hangingSignTexture = Identifier.of(Karambit.MOD_ID, "entity/signs/hanging/" + name);
         Identifier hangingSignGuiTexture = Identifier.of(Karambit.MOD_ID, "textures/gui/hanging_signs/" + name);
         hangingSign = KarambitRegistry.register(name + "_hanging_sign", new TerraformHangingSignBlock(hangingSignTexture, hangingSignGuiTexture, FabricBlockSettings.copyOf(Blocks.CRIMSON_HANGING_SIGN).mapColor(colors.planks)));
-        wallHangingSign = KarambitRegistry.register(name + "_wall_hanging_sign", new TerraformWallHangingSignBlock(hangingSignTexture, hangingSignGuiTexture, FabricBlockSettings.copyOf(Blocks.crimson_WALL_HANGING_SIGN).mapColor(colors.planks).dropsLike(hangingSign)));
-    }
+        wallHangingSign = KarambitRegistry.register(name + "_wall_hanging_sign", new TerraformWallHangingSignBlock(hangingSignTexture, hangingSignGuiTexture, FabricBlockSettings.copyOf(Blocks.CRIMSON_WALL_HANGING_SIGN).mapColor(colors.planks).dropsLike(hangingSign)));
 
+        stem = KarambitRegistry.register(name + "_stem", PillarLogHelper.of(colors.planks, colors.bark));
+        strippedStem = KarambitRegistry.register("stripped_" + name + "_stem",  PillarLogHelper.of(colors.planks));
+        hyphae = KarambitRegistry.register(name + "_hyphae", PillarLogHelper.of(colors.planks, colors.bark));
+        strippedHyphae = KarambitRegistry.register("stripped_" + name + "_hyphae",  PillarLogHelper.of(colors.planks));
+
+    }
 
     public static WoodBlocks register(String name, WoodColors colors) {
         WoodBlocks blocks = new WoodBlocks(name, colors);
         blocks.addStrippables();
         return blocks;
-    }
-
-    public static WoodBlocks register(String name, WoodColors colors) {
-        return register(name, colors);
     }
 
     private void addStrippables() {

@@ -13,7 +13,7 @@ public class WoodItems {
     private final TerraformBoatType BOAT_TYPE;
 
     public final BlockItem stem;
-    public final BlockItem wood;
+    public final BlockItem hyphae;
     public final BlockItem planks;
     public final BlockItem slab;
     public final BlockItem stairs;
@@ -58,10 +58,10 @@ public class WoodItems {
         }
 
         if (blocks.hasHyphae()) {
-            wood = KarambitRegistry.registerBlockItem(name + "_hyphae", blocks.hyphae);
+            hyphae = KarambitRegistry.registerBlockItem(name + "_hyphae", blocks.hyphae);
             strippedHyphae = KarambitRegistry.registerBlockItem("stripped_" + name + "_hyphae", blocks.strippedHyphae);
         } else {
-            wood = null;
+            hyphae = null;
             strippedHyphae = null;
         }
     }
@@ -76,7 +76,7 @@ public class WoodItems {
     }
 
     public boolean hasHyphae() {
-        return (wood != null && strippedHyphae != null);
+        return (hyphae != null && strippedHyphae != null);
     }
 
     public boolean hasBoat() {
