@@ -11,12 +11,10 @@ base {
 }
 
 repositories {
-	/*
 	maven {
-		name = 'Cloth Config'
-		url = 'https://maven.shedaniel.me/'
+		name = 'TerraformersMC'
+		url = 'https://maven.terraformersmc.com/'
 	}
-	*/
 }
 
 dependencies {
@@ -29,7 +27,8 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// API for signs
-	include "terraform-api", "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
+	modImplementation "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
+	include "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
 }
 
 processResources {
