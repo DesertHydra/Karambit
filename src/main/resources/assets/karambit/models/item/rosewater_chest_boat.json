@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "karambit:item/rosewater_chest_boat"
+  }
+}

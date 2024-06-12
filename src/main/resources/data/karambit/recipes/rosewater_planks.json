@@ -4,7 +4,7 @@
   "group": "planks",
   "ingredients": [
     {
-      "item": "karambit:rosewater_stem"
+      "tag": "karambit:rosewater_logs"
     }
   ],
   "result": {

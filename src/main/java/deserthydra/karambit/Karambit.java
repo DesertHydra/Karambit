@@ -1,6 +1,7 @@
 package deserthydra.karambit;
 
 import com.google.common.reflect.Reflection;
+import deserthydra.karambit.registry.BoatItems;
 import deserthydra.karambit.registry.CreativeTabOrder;
 import deserthydra.karambit.registry.RosewaterBlocks;
 import deserthydra.karambit.registry.RosewaterItems;
@@ -19,5 +20,6 @@ public class Karambit implements ModInitializer {
 		CreativeTabOrder.register();
 		Reflection.initialize(RosewaterBlocks.class, RosewaterItems.class);
 		RosewaterBlocks.registerBlockProperties();
+		BoatItems.registerBoats();
 	}
 }
