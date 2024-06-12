@@ -5,6 +5,7 @@
 	"mixins": [],
 	"client": [
 		"CauldronBehaviourMixin",
+
 		"BoatDropsMixin",
 		"BoatTypeMixin",
 		"ChestBoatDropsMixin"
