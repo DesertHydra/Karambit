@@ -1,12 +1,7 @@
 package deserthydra.karambit;
 
-import com.google.common.reflect.Reflection;
-import deserthydra.karambit.registry.BoatItems;
-import deserthydra.karambit.registry.CreativeTabOrder;
-import deserthydra.karambit.registry.RosewaterBlocks;
-import deserthydra.karambit.registry.RosewaterItems;
-import net.minecraft.resource.ResourceFinder;
-
+import deserthydra.karambit.registry.KarambitBlocks;
+import deserthydra.karambit.registry.KarambitItems;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
@@ -24,11 +19,15 @@ public class Karambit implements ModInitializer {
 		return new Identifier(MOD_ID, path);
 	}
 
+	private static void register() {
+		KarambitBlocks.init();
+		KarambitItems.init();
+
+	}
+
 	@Override
 	public void onInitialize() {
 		CreativeTabOrder.register();
-		Reflection.initialize(RosewaterBlocks.class, RosewaterItems.class);
-		RosewaterBlocks.registerBlockProperties();
-		BoatItems.registerBoats();
+		register();
 	}
 }
