@@ -26,28 +26,6 @@ public class Karambit implements ModInitializer {
 	public static final String MOD_ID = "karambit";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	public static final Map<Item, Item> CRIMSON_TO_ROSEWATER = Map.of(
-			Items.CRIMSON_STEM, KarambitItems.ROSEWATER.stem,
-			Items.CRIMSON_HYPHAE, KarambitItems.ROSEWATER.hyphae,
-			Items.STRIPPED_CRIMSON_STEM, KarambitItems.ROSEWATER.strippedStem,
-			Items.STRIPPED_CRIMSON_HYPHAE, KarambitItems.ROSEWATER.strippedHyphae,
-			Items.CRIMSON_PLANKS, KarambitItems.ROSEWATER.planks,
-			Items.CRIMSON_STAIRS, KarambitItems.ROSEWATER.stairs,
-			Items.CRIMSON_SLAB, KarambitItems.ROSEWATER.slab);
-
-
-	public static final Map<Item, Item> WARPED_TO_AZURITE = Map.of(
-
-			Items.WARPED_STEM, KarambitItems.AZURITE.stem,
-			Items.WARPED_HYPHAE, KarambitItems.AZURITE.hyphae,
-			Items.STRIPPED_WARPED_STEM, KarambitItems.AZURITE.strippedStem,
-			Items.STRIPPED_WARPED_HYPHAE, KarambitItems.AZURITE.strippedHyphae,
-			Items.WARPED_PLANKS, KarambitItems.AZURITE.planks,
-			Items.WARPED_STAIRS, KarambitItems.AZURITE.stairs,
-			Items.WARPED_SLAB, KarambitItems.AZURITE.slab);
-
-
-
 	@NotNull
 	public static Identifier id(@NotNull String path) {
 		return new Identifier(MOD_ID, path);
@@ -63,20 +41,34 @@ public class Karambit implements ModInitializer {
 		CreativeTabOrder.register();
 		register();
 
-		for (var entry: CRIMSON_TO_ROSEWATER.entrySet()) {
-			System.out.println("Hey I got crimson! " + entry.getKey().toString());
-			System.out.println("and I got rosewater! " + entry.getValue().toString());
+		var washableToWashedMap = Map.ofEntries(
+				Map.entry(Items.CRIMSON_STEM, KarambitItems.ROSEWATER.stem),
+				Map.entry(Items.CRIMSON_HYPHAE, KarambitItems.ROSEWATER.hyphae),
+				Map.entry(Items.STRIPPED_CRIMSON_STEM, KarambitItems.ROSEWATER.strippedStem),
+				Map.entry(Items.STRIPPED_CRIMSON_HYPHAE, KarambitItems.ROSEWATER.strippedHyphae),
+				Map.entry(Items.CRIMSON_PLANKS, KarambitItems.ROSEWATER.planks),
+				Map.entry(Items.CRIMSON_STAIRS, KarambitItems.ROSEWATER.stairs),
+				Map.entry(Items.CRIMSON_SLAB, KarambitItems.ROSEWATER.slab),
+				Map.entry(Items.WARPED_STEM, KarambitItems.AZURITE.stem),
+				Map.entry(Items.WARPED_HYPHAE, KarambitItems.AZURITE.hyphae),
+				Map.entry(Items.STRIPPED_WARPED_STEM, KarambitItems.AZURITE.strippedStem),
+				Map.entry(Items.STRIPPED_WARPED_HYPHAE, KarambitItems.AZURITE.strippedHyphae),
+				Map.entry(Items.WARPED_PLANKS, KarambitItems.AZURITE.planks),
+				Map.entry(Items.WARPED_STAIRS, KarambitItems.AZURITE.stairs),
+				Map.entry(Items.WARPED_SLAB, KarambitItems.AZURITE.slab));
 
+		for (var entry: washableToWashedMap.entrySet()) {
 			UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
-				if (player.getStackInHand(hand).INTIEMHERE && player.isSpectator() &&
+				if (player.getStackInHand(hand).getItem().equals(entry.getKey()) && !player.isSpectator() &&
 						world.getBlockState(hitResult.getBlockPos()).isOf(Blocks.WATER)){
-					player.getInventory().offerOrDrop(Items.OUTITEMHERE.getDefaultStack());
-					player.getMainHandStack().decrement(1);
+					player.getInventory().offerOrDrop(entry.getValue().getDefaultStack());
+					player.getStackInHand(hand).decrement(1);
 					player.playSound(SoundEvent.of(SoundEvents.BLOCK_GRINDSTONE_USE.getId()), SoundCategory.BLOCKS, 1.0F, 1.0F);
 					return ActionResult.SUCCESS;
-
 				}
-			};
+
+				return ActionResult.PASS;
+			});
 		}
 	}
 }
