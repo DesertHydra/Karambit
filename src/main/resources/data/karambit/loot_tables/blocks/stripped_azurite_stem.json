@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "karambit:stripped_azurite_stem"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "karambit:blocks/stripped_azurite_stem"
+}

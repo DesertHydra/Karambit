@@ -10,6 +10,7 @@ import net.minecraft.util.Identifier;
 public class KarambitClient implements ClientModInitializer {
     @SuppressWarnings("unused")
     private static final RenderLayer DOOR_BLOCK_LAYER = RenderLayer.getCutout();
+    private static final RenderLayer TRAPDOOR_BLOCK_LAYER = RenderLayer.getCutout();
     private static final RenderLayer PLANT_BLOCK_LAYER = RenderLayer.getCutout();
 
     @Override
@@ -26,11 +27,13 @@ public class KarambitClient implements ClientModInitializer {
                 KarambitBlocks.ROSEWATER.stem,
                 KarambitBlocks.ROSEWATER.strippedStem,
                 KarambitBlocks.AZURITE.stem,
-                KarambitBlocks.AZURITE.strippedStem
-        );
+                KarambitBlocks.AZURITE.strippedStem);
 
-                BlockRenderLayerMap.INSTANCE.putBlock(
-                KarambitBlocks.ROSEWATER.trapdoor, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlocks(
+                TRAPDOOR_BLOCK_LAYER,
+                KarambitBlocks.ROSEWATER.trapdoor,
+                KarambitBlocks.AZURITE.trapdoor);
+
 
         registerEntityRenderers();
     }
