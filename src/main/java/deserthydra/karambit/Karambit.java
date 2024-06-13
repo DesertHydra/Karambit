@@ -1,20 +1,28 @@
 package deserthydra.karambit;
 
+import deserthydra.karambit.mixin.ItemAccessor;
 import deserthydra.karambit.registry.KarambitBlocks;
 import deserthydra.karambit.registry.KarambitItems;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.WoodType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemUsage;
 import net.minecraft.item.Items;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.hit.HitResult;
+import net.minecraft.world.RaycastContext;
+import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,16 +66,28 @@ public class Karambit implements ModInitializer {
 				Map.entry(Items.WARPED_SLAB, KarambitItems.AZURITE.slab));
 
 		for (var entry: washableToWashedMap.entrySet()) {
-			UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
-				if (player.getStackInHand(hand).getItem().equals(entry.getKey()) && !player.isSpectator() &&
-						world.getBlockState(hitResult.getBlockPos()).isOf(Blocks.WATER)){
-					player.getInventory().offerOrDrop(entry.getValue().getDefaultStack());
-					player.getStackInHand(hand).decrement(1);
-					player.playSound(SoundEvent.of(SoundEvents.BLOCK_GRINDSTONE_USE.getId()), SoundCategory.BLOCKS, 1.0F, 1.0F);
-					return ActionResult.SUCCESS;
+			UseItemCallback.EVENT.register((player, world, hand) -> {
+				var stack = player.getStackInHand(hand);
+				if (stack.isOf(entry.getKey())) {
+					var blockHitResult = ItemAccessor.callRaycast(world, player, RaycastContext.FluidHandling.SOURCE_ONLY);
+					if (blockHitResult.getType() == HitResult.Type.BLOCK) {
+						var blockPos = blockHitResult.getBlockPos();
+						if (!world.canPlayerModifyAt(player, blockPos)) {
+							return TypedActionResult.pass(stack);
+						}
+
+						if (world.getFluidState(blockPos).isIn(FluidTags.WATER)) {
+							world.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_GENERIC_SPLASH, SoundCategory.NEUTRAL, 1.0F, 1.0F);
+							if (!player.getAbilities().creativeMode) {
+								stack.decrement(1);
+							}
+							player.getInventory().offerOrDrop(entry.getValue().getDefaultStack());
+							return TypedActionResult.success(stack);
+						}
+					}
 				}
 
-				return ActionResult.PASS;
+				return TypedActionResult.pass(stack);
 			});
 		}
 	}

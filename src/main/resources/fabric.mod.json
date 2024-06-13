@@ -18,6 +18,7 @@
 		"main": ["deserthydra.karambit.Karambit"],
 		"client": ["deserthydra.karambit.KarambitClient"]
 	},
+	"mixins": ["karambit.mixins.json"],
 	"depends": {
 		"fabricloader": ">=0.15.6",
 		"minecraft": "~1.20.1",
