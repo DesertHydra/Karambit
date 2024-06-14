@@ -1,36 +1,4 @@
 {
-  "block.karambit.rosewater_stem": "Rosewater Stem",
-  "block.karambit.rosewater_hyphae": "Rosewater Hyphae",
-  "block.karambit.rosewater_stripped_stem": "Stripped Rosewater Stem",
-  "block.karambit.rosewater_stripped_hyphae": "Stripped Rosewater Hyphae",
-  "block.karambit.rosewater_planks": "Rosewater Planks",
-  "block.karambit.rosewater_stairs": "Rosewater Stairs",
-  "block.karambit.rosewater_slab": "Rosewater Slab",
-  "block.karambit.rosewater_fence": "Rosewater Fence",
-  "block.karambit.rosewater_fence_gate": "Rosewater Fence Gate",
-  "block.karambit.rosewater_door": "Rosewater Door",
-  "block.karambit.rosewater_trapdoor": "Rosewater Trapdoor",
-  "block.karambit.rosewater_pressure_plate": "Rosewater Pressure Plate",
-  "block.karambit.rosewater_button": "Rosewater Button",
-  "item.karambit.rosewater_boat": "Rosewater Boat",
-  "item.karambit.rosewater_chest_boat": "Rosewater Boat with Chest",
-
-  "block.karambit.azurite_stem": "Azurite Stem",
-  "block.karambit.azurite_hyphae": "Azurite Hyphae",
-  "block.karambit.azurite_stripped_stem": "Stripped Azurite Stem",
-  "block.karambit.azurite_stripped_hyphae": "Stripped Azurite Hyphae",
-  "block.karambit.azurite_planks": "Azurite Planks",
-  "block.karambit.azurite_stairs": "Azurite Stairs",
-  "block.karambit.azurite_slab": "Azurite Slab",
-  "block.karambit.azurite_fence": "Azurite Fence",
-  "block.karambit.azurite_fence_gate": "Azurite Fence Gate",
-  "block.karambit.azurite_door": "Azurite Door",
-  "block.karambit.azurite_trapdoor": "Azurite Trapdoor",
-  "block.karambit.azurite_pressure_plate": "Azurite Pressure Plate",
-  "block.karambit.azurite_button": "Azurite Button",
-  "item.karambit.azurite_boat": "Azurite Boat",
-  "item.karambit.azurite_chest_boat": "Azurite Boat with Chest",
-
   "biome.minecraft.cherry_grove": "Purpleheart Grove",
   "biome.minecraft.warped_forest": "Malachite Forest",
 
@@ -51,7 +19,7 @@
   "block.minecraft.acacia_wall_hanging_sign": "Bulnesia Wall Hanging Sign",
   "block.minecraft.acacia_wall_sign": "Bulnesia Wall Sign",
   "block.minecraft.acacia_wood": "Bulnesia Wood",
-
+  
   "block.minecraft.cherry_button": "Purpleheart Button",
   "block.minecraft.cherry_door": "Purpleheart Door",
   "block.minecraft.cherry_fence": "Purpleheart Fence",
@@ -109,7 +77,8 @@
 
   "item.minecraft.acacia_boat": "Bulnesia Boat",
   "item.minecraft.acacia_chest_boat": "Bulnesia Boat with Chest",
-
+ 
   "item.minecraft.cherry_boat": "Purpleheart Boat",
   "item.minecraft.cherry_chest_boat": "Purpleheart Boat with Chest"
+
 }

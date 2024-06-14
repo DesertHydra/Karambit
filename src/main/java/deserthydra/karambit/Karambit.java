@@ -77,7 +77,7 @@ public class Karambit implements ModInitializer {
 						}
 
 						if (world.getFluidState(blockPos).isIn(FluidTags.WATER)) {
-							world.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_GENERIC_SPLASH, SoundCategory.NEUTRAL, 1.0F, 1.0F);
+							world.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.NEUTRAL, 1.0F, 1.0F);
 							if (!player.getAbilities().creativeMode) {
 								stack.decrement(1);
 							}
