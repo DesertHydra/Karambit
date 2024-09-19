@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "karambit:item/azurite_chest_boat"
+  }
+}

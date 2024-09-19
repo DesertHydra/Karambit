@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "karambit:block/rosewater_stem_top",
+    "side": "karambit:block/rosewater_stem"
+  }
+}

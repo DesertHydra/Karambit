@@ -1,0 +1,87 @@
+{
+  "biome.minecraft.cherry_grove": "Purpleheart Grove",
+  "biome.minecraft.warped_forest": "Malachite Forest",
+
+  "block.minecraft.acacia_button": "Bulnesia Button",
+  "block.minecraft.acacia_door": "Bulnesia Door",
+  "block.minecraft.acacia_fence": "Bulnesia Fence",
+  "block.minecraft.acacia_fence_gate": "Bulnesia Fence Gate",
+  "block.minecraft.acacia_hanging_sign": "Bulnesia Hanging Sign",
+  "block.minecraft.acacia_leaves": "Bulnesia Leaves",
+  "block.minecraft.acacia_log": "Bulnesia Log",
+  "block.minecraft.acacia_planks": "Bulnesia Planks",
+  "block.minecraft.acacia_pressure_plate": "Bulnesia Pressure Plate",
+  "block.minecraft.acacia_sapling": "Bulnesia Sapling",
+  "block.minecraft.acacia_sign": "Bulnesia Sign",
+  "block.minecraft.acacia_slab": "Bulnesia Slab",
+  "block.minecraft.acacia_stairs": "Bulnesia Stairs",
+  "block.minecraft.acacia_trapdoor": "Bulnesia Trapdoor",
+  "block.minecraft.acacia_wall_hanging_sign": "Bulnesia Wall Hanging Sign",
+  "block.minecraft.acacia_wall_sign": "Bulnesia Wall Sign",
+  "block.minecraft.acacia_wood": "Bulnesia Wood",
+
+  "block.minecraft.cherry_button": "Purpleheart Button",
+  "block.minecraft.cherry_door": "Purpleheart Door",
+  "block.minecraft.cherry_fence": "Purpleheart Fence",
+  "block.minecraft.cherry_fence_gate": "Purpleheart Fence Gate",
+  "block.minecraft.cherry_hanging_sign": "Purpleheart Hanging Sign",
+  "block.minecraft.cherry_leaves": "Purpleheart Leaves",
+  "block.minecraft.cherry_log": "Purpleheart Log",
+  "block.minecraft.cherry_planks": "Purpleheart Planks",
+  "block.minecraft.cherry_pressure_plate": "Purpleheart Pressure Plate",
+  "block.minecraft.cherry_sapling": "Purpleheart Sapling",
+  "block.minecraft.cherry_sign": "Purpleheart Sign",
+  "block.minecraft.cherry_slab": "Purpleheart Slab",
+  "block.minecraft.cherry_stairs": "Purpleheart Stairs",
+  "block.minecraft.cherry_trapdoor": "Purpleheart Trapdoor",
+  "block.minecraft.cherry_wall_hanging_sign": "Purpleheart Wall Hanging Sign",
+  "block.minecraft.cherry_wall_sign": "Purpleheart Wall Sign",
+  "block.minecraft.cherry_wood": "Purpleheart Wood",
+
+  "block.minecraft.warped_button": "Malachite Button",
+  "block.minecraft.warped_door": "Malachite Door",
+  "block.minecraft.warped_fence": "Malachite Fence",
+  "block.minecraft.warped_fence_gate": "Malachite Fence Gate",
+  "block.minecraft.warped_fungus": "Malachite Fungus",
+  "block.minecraft.warped_hanging_sign": "Malachite Hanging Sign",
+  "block.minecraft.warped_hyphae": "Malachite Hyphae",
+  "block.minecraft.warped_nylium": "Malachite Nylium",
+  "block.minecraft.warped_planks": "Malachite Planks",
+  "block.minecraft.warped_pressure_plate": "Malachite Pressure Plate",
+  "block.minecraft.warped_roots": "Malachite Roots",
+  "block.minecraft.warped_sign": "Malachite Sign",
+  "block.minecraft.warped_slab": "Malachite Slab",
+  "block.minecraft.warped_stairs": "Malachite Stairs",
+  "block.minecraft.warped_stem": "Malachite Stem",
+  "block.minecraft.warped_trapdoor": "Malachite Trapdoor",
+  "block.minecraft.warped_wall_hanging_sign": "Malachite Wall Hanging Sign",
+  "block.minecraft.warped_wall_sign": "Malachite Wall Sign",
+  "block.minecraft.warped_wart_block": "Malachite Wart Block",
+
+
+  "block.minecraft.potted_warped_fungus": "Potted Malachite Fungus",
+  "block.minecraft.potted_warped_roots": "Potted Malachite Roots",
+
+  "block.minecraft.potted_acacia_sapling": "Potted Bulnesia Sapling",
+  "block.minecraft.potted_cherry_sapling": "Potted Purpleheart Sapling",
+
+  "block.minecraft.stripped_acacia_log": "Stripped Bulnesia Log",
+  "block.minecraft.stripped_acacia_wood": "Stripped Bulnesia Wood",
+
+  "block.minecraft.stripped_cherry_log": "Stripped Purpleheart Log",
+  "block.minecraft.stripped_cherry_wood": "Stripped Purpleheart Wood",
+
+  "block.minecraft.stripped_warped_hyphae": "Stripped Malachite Hyphae",
+  "block.minecraft.stripped_warped_stem": "Stripped Malachite Stem",
+
+
+  "item.minecraft.acacia_boat": "Bulnesia Boat",
+  "item.minecraft.acacia_chest_boat": "Bulnesia Boat with Chest",
+
+  "item.minecraft.cherry_boat": "Purpleheart Boat",
+  "item.minecraft.cherry_chest_boat": "Purpleheart Boat with Chest",
+
+  "item.minecraft.pink_petals": "Purple Heart"
+
+
+}
