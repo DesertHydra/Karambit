@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "karambit:block/azurite_slab"
+    },
+    "type=double": {
+      "model": "karambit:block/azurite_planks"
+    },
+    "type=top": {
+      "model": "karambit:block/azurite_slab_top"
+    }
+  }
+}

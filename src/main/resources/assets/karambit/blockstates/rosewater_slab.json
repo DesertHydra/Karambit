@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "karambit:block/rosewater_slab"
+    },
+    "type=double": {
+      "model": "karambit:block/rosewater_planks"
+    },
+    "type=top": {
+      "model": "karambit:block/rosewater_slab_top"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "karambit:block/azurite_hyphae",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "karambit:block/azurite_hyphae"
+    },
+    "axis=z": {
+      "model": "karambit:block/azurite_hyphae",
+      "x": 90
+    }
+  }
+}

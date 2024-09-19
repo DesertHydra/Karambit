@@ -1,0 +1,30 @@
+{
+	"schemaVersion": 1,
+	"id": "karambit",
+	"version": "${version}",
+	"name": "Karambit",
+	"description": "A subtle overhaul of vanilla wood for cohesion with IRL biomes and colors.",
+	"authors": [
+		"mavrixen"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/mod/karambit",
+		"sources": "https://github.com/DesertHydra/Karambit",
+		"issues": "https://github.com/DesertHydra/Karambit/issues"
+	},
+	"license": "MPL-2.0",
+	"icon": "assets/karambit/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": ["deserthydra.karambit.Karambit"],
+		"client": ["deserthydra.karambit.KarambitClient"],
+		"fabric-datagen": ["deserthydra.karambit.data.KarambitDataGenerator"]
+	},
+	"mixins": ["karambit.mixins.json"],
+	"depends": {
+		"fabricloader": ">=0.15.6",
+		"minecraft": "~1.21.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	}
+}
