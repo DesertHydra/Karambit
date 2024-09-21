@@ -11,6 +11,7 @@ import deserthydra.karambit.tags.KarambitBlockTags;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
 public class WoodBlocks {
@@ -60,10 +61,10 @@ public class WoodBlocks {
         hangingSign = KarambitRegistry.register(name + "_hanging_sign", new TerraformHangingSignBlock(hangingSignTexture, hangingSignGuiTexture, AbstractBlock.Settings.copy(Blocks.CRIMSON_HANGING_SIGN).mapColor(colors.planks)));
         wallHangingSign = KarambitRegistry.register(name + "_wall_hanging_sign", new TerraformWallHangingSignBlock(hangingSignTexture, hangingSignGuiTexture, AbstractBlock.Settings.copy(Blocks.CRIMSON_WALL_HANGING_SIGN).mapColor(colors.planks).dropsLike(hangingSign)));
 
-        stem = KarambitRegistry.register(name + "_stem", PillarLogHelper.of(colors.planks, colors.bark));
-        strippedStem = KarambitRegistry.register("stripped_" + name + "_stem",  PillarLogHelper.of(colors.planks));
-        hyphae = KarambitRegistry.register(name + "_hyphae", PillarLogHelper.of(colors.planks, colors.bark));
-        strippedHyphae = KarambitRegistry.register("stripped_" + name + "_hyphae",  PillarLogHelper.of(colors.planks));
+        stem = KarambitRegistry.register(name + "_stem", PillarLogHelper.ofNether(colors.planks, colors.bark));
+        strippedStem = KarambitRegistry.register("stripped_" + name + "_stem",  PillarLogHelper.ofNether(colors.planks));
+        hyphae = KarambitRegistry.register(name + "_hyphae", PillarLogHelper.ofNether(colors.planks, colors.bark));
+        strippedHyphae = KarambitRegistry.register("stripped_" + name + "_hyphae",  PillarLogHelper.ofNether(colors.planks));
 
         logsTag = KarambitBlockTags.of(name + "_stems");
 
