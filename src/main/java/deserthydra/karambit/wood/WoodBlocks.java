@@ -1,17 +1,12 @@
 package deserthydra.karambit.wood;
 
-import com.terraformersmc.terraform.sign.api.block.TerraformHangingSignBlock;
-import com.terraformersmc.terraform.sign.api.block.TerraformSignBlock;
-import com.terraformersmc.terraform.sign.api.block.TerraformWallHangingSignBlock;
-import com.terraformersmc.terraform.sign.api.block.TerraformWallSignBlock;
-import com.terraformersmc.terraform.wood.api.block.PillarLogHelper;
-import deserthydra.karambit.Karambit;
 import deserthydra.karambit.registry.KarambitRegistry;
 import deserthydra.karambit.tags.KarambitBlockTags;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.*;
+import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.Identifier;
+import net.minecraft.sound.BlockSoundGroup;
 
 public class WoodBlocks {
 
@@ -28,10 +23,10 @@ public class WoodBlocks {
     public final DoorBlock door;
     public final ButtonBlock button;
     public final PressurePlateBlock pressurePlate;
-    public final TerraformSignBlock sign;
-    public final TerraformWallSignBlock wallSign;
-    public final TerraformHangingSignBlock hangingSign;
-    public final TerraformWallHangingSignBlock wallHangingSign;
+    public final SignBlock sign;
+    public final WallSignBlock wallSign;
+    public final HangingSignBlock hangingSign;
+    public final WallHangingSignBlock wallHangingSign;
     public final TrapdoorBlock trapdoor;
     public final Block strippedStem;
     public final Block strippedHyphae;
@@ -41,29 +36,26 @@ public class WoodBlocks {
         this.NAME = name;
         this.COLORS = colors;
 
-        planks = KarambitRegistry.register(name + "_planks", new Block(AbstractBlock.Settings.copy(Blocks.CRIMSON_PLANKS).mapColor(colors.planks)));
-        slab = KarambitRegistry.register(name + "_slab", new SlabBlock(AbstractBlock.Settings.copy(Blocks.CRIMSON_SLAB).mapColor(colors.planks)));
-        stairs = KarambitRegistry.register(name + "_stairs", new StairsBlock(planks.getDefaultState(), AbstractBlock.Settings.copy(Blocks.CRIMSON_STAIRS).mapColor(colors.planks)));
-        fence = KarambitRegistry.register(name + "_fence", new FenceBlock(AbstractBlock.Settings.copy(Blocks.CRIMSON_FENCE).mapColor(colors.planks)));
-        fenceGate = KarambitRegistry.register(name + "_fence_gate", new FenceGateBlock(WoodType.CRIMSON, AbstractBlock.Settings.copy(Blocks.CRIMSON_FENCE_GATE).mapColor(colors.planks)));
-        door = KarambitRegistry.register(name + "_door", new DoorBlock(BlockSetType.CRIMSON, AbstractBlock.Settings.copy(Blocks.CRIMSON_DOOR).mapColor(colors.planks)));
-        button = KarambitRegistry.register(name + "_button", new ButtonBlock(BlockSetType.CRIMSON, 30, AbstractBlock.Settings.copy(Blocks.CRIMSON_BUTTON).mapColor(colors.planks)));
-        pressurePlate = KarambitRegistry.register(name + "_pressure_plate", new PressurePlateBlock(BlockSetType.CRIMSON, AbstractBlock.Settings.copy(Blocks.CRIMSON_PRESSURE_PLATE).mapColor(colors.planks)));
-        trapdoor = KarambitRegistry.register(name + "_trapdoor", new TrapdoorBlock(BlockSetType.CRIMSON, AbstractBlock.Settings.copy(Blocks.CRIMSON_TRAPDOOR).mapColor(colors.planks)));
+        planks = KarambitRegistry.register(name + "_planks", Block::new, AbstractBlock.Settings.copy(Blocks.CRIMSON_PLANKS).mapColor(colors.planks));
+        slab = KarambitRegistry.register(name + "_slab", SlabBlock::new, AbstractBlock.Settings.copy(Blocks.CRIMSON_SLAB).mapColor(colors.planks));
+        stairs = KarambitRegistry.register(name + "_stairs", settings -> new StairsBlock(planks.getDefaultState(), settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_STAIRS).mapColor(colors.planks));
+        fence = KarambitRegistry.register(name + "_fence", FenceBlock::new, AbstractBlock.Settings.copy(Blocks.CRIMSON_FENCE).mapColor(colors.planks));
+        fenceGate = KarambitRegistry.register(name + "_fence_gate", settings -> new FenceGateBlock(WoodType.CRIMSON, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_FENCE_GATE).mapColor(colors.planks));
+        door = KarambitRegistry.register(name + "_door", settings -> new DoorBlock(BlockSetType.CRIMSON, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_DOOR).mapColor(colors.planks));
+        button = KarambitRegistry.register(name + "_button", settings -> new ButtonBlock(BlockSetType.CRIMSON, 30, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_BUTTON).mapColor(colors.planks));
+        pressurePlate = KarambitRegistry.register(name + "_pressure_plate", settings -> new PressurePlateBlock(BlockSetType.CRIMSON, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_PRESSURE_PLATE).mapColor(colors.planks));
+        trapdoor = KarambitRegistry.register(name + "_trapdoor", settings -> new TrapdoorBlock(BlockSetType.CRIMSON, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_TRAPDOOR).mapColor(colors.planks));
 
-        Identifier signTexture = Identifier.of(Karambit.MOD_ID, "entity/signs/" + name);
-        sign = KarambitRegistry.register(name + "_sign", new TerraformSignBlock(signTexture, AbstractBlock.Settings.copy(Blocks.CRIMSON_SIGN).mapColor(colors.planks)));
-        wallSign = KarambitRegistry.register(name + "_wall_sign", new TerraformWallSignBlock(signTexture, AbstractBlock.Settings.copy(Blocks.CRIMSON_WALL_SIGN).mapColor(colors.planks).lootTable(sign.getLootTableKey())));
+        sign = KarambitRegistry.register(name + "_sign", settings -> new SignBlock(WoodType.CRIMSON, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_SIGN).mapColor(colors.planks));
+        wallSign = KarambitRegistry.register(name + "_wall_sign", settings -> new WallSignBlock(WoodType.CRIMSON, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_WALL_SIGN).mapColor(colors.planks).lootTable(sign.getLootTableKey()));
 
-        Identifier hangingSignTexture = Identifier.of(Karambit.MOD_ID, "entity/signs/hanging/" + name);
-        Identifier hangingSignGuiTexture = Identifier.of(Karambit.MOD_ID, "textures/gui/hanging_signs/" + name);
-        hangingSign = KarambitRegistry.register(name + "_hanging_sign", new TerraformHangingSignBlock(hangingSignTexture, hangingSignGuiTexture, AbstractBlock.Settings.copy(Blocks.CRIMSON_HANGING_SIGN).mapColor(colors.planks)));
-        wallHangingSign = KarambitRegistry.register(name + "_wall_hanging_sign", new TerraformWallHangingSignBlock(hangingSignTexture, hangingSignGuiTexture, AbstractBlock.Settings.copy(Blocks.CRIMSON_WALL_HANGING_SIGN).mapColor(colors.planks).lootTable(hangingSign.getLootTableKey())));
+        hangingSign = KarambitRegistry.register(name + "_hanging_sign", settings -> new HangingSignBlock(WoodType.CRIMSON, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_HANGING_SIGN).mapColor(colors.planks));
+        wallHangingSign = KarambitRegistry.register(name + "_wall_hanging_sign", settings -> new WallHangingSignBlock(WoodType.CRIMSON, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_WALL_HANGING_SIGN).mapColor(colors.planks).lootTable(hangingSign.getLootTableKey()));
 
-        stem = KarambitRegistry.register(name + "_stem", PillarLogHelper.ofNether(colors.planks, colors.bark));
-        strippedStem = KarambitRegistry.register("stripped_" + name + "_stem",  PillarLogHelper.ofNether(colors.planks));
-        hyphae = KarambitRegistry.register(name + "_hyphae", PillarLogHelper.ofNether(colors.planks, colors.bark));
-        strippedHyphae = KarambitRegistry.register("stripped_" + name + "_hyphae",  PillarLogHelper.ofNether(colors.planks));
+        stem = KarambitRegistry.register(name + "_stem", PillarBlock::new, Blocks.createNetherStemSettings(colors.bark));
+        strippedStem = KarambitRegistry.register("stripped_" + name + "_stem", PillarBlock::new, Blocks.createNetherStemSettings(colors.bark));
+        hyphae = KarambitRegistry.register(name + "_hyphae", PillarBlock::new, Blocks.createNetherStemSettings(colors.bark));
+        strippedHyphae = KarambitRegistry.register("stripped_" + name + "_hyphae", PillarBlock::new, Blocks.createNetherStemSettings(colors.bark));
 
         logsTag = KarambitBlockTags.of(name + "_stems");
 

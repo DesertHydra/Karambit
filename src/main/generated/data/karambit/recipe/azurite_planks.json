@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "karambit:azurite_stems"
-    }
+    "#karambit:azurite_stems"
   ],
   "result": {
     "count": 4,

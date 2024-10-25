@@ -23,6 +23,7 @@
 		"fabric-datagen": ["deserthydra.karambit.data.KarambitDataGenerator"]
 	},
 	"mixins": ["karambit.mixins.json"],
+	"accessWidener": "karambit.accesswidener",
 	"depends": {
 		"fabricloader": ">=0.15.6",
 		"minecraft": "~1.21.1",

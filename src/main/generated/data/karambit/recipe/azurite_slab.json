@@ -3,9 +3,7 @@
   "category": "building",
   "group": "wooden_slab",
   "key": {
-    "#": {
-      "item": "karambit:azurite_planks"
-    }
+    "#": "karambit:azurite_planks"
   },
   "pattern": [
     "###"

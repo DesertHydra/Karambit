@@ -1,14 +1,19 @@
 package deserthydra.karambit;
 
-import com.terraformersmc.terraform.boat.api.client.TerraformBoatClientHelper;
 import deserthydra.karambit.registry.KarambitBlocks;
+import deserthydra.karambit.registry.KarambitBoats;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
-import net.fabricmc.loader.api.ModContainer;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.entity.BoatEntityRenderer;
+import net.minecraft.client.render.entity.model.BoatEntityModel;
+import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
@@ -38,6 +43,15 @@ public class KarambitClient implements ClientModInitializer {
                 KarambitBlocks.ROSEWATER.trapdoor,
                 KarambitBlocks.AZURITE.trapdoor);
 
+        BlockEntityType.SIGN.addSupportedBlock(KarambitBlocks.ROSEWATER.sign);
+        BlockEntityType.SIGN.addSupportedBlock(KarambitBlocks.AZURITE.sign);
+        BlockEntityType.SIGN.addSupportedBlock(KarambitBlocks.ROSEWATER.wallSign);
+        BlockEntityType.SIGN.addSupportedBlock(KarambitBlocks.AZURITE.wallSign);
+        BlockEntityType.HANGING_SIGN.addSupportedBlock(KarambitBlocks.ROSEWATER.hangingSign);
+        BlockEntityType.HANGING_SIGN.addSupportedBlock(KarambitBlocks.AZURITE.hangingSign);
+        BlockEntityType.HANGING_SIGN.addSupportedBlock(KarambitBlocks.ROSEWATER.wallHangingSign);
+        BlockEntityType.HANGING_SIGN.addSupportedBlock(KarambitBlocks.AZURITE.wallHangingSign);
+
         ResourceManagerHelper.registerBuiltinResourcePack(
                 Identifier.of(Karambit.MOD_ID, "karambit_overrides"),
                 FabricLoader.getInstance().getModContainer(Karambit.MOD_ID).orElseThrow(),
@@ -49,7 +63,20 @@ public class KarambitClient implements ClientModInitializer {
     }
 
     private void registerEntityRenderers() {
-        TerraformBoatClientHelper.registerModelLayers(Identifier.of(Karambit.MOD_ID, "rosewater"), false);
-        TerraformBoatClientHelper.registerModelLayers(Identifier.of(Karambit.MOD_ID, "azurite"), false);
+        var rosewaterModelLayer = new EntityModelLayer(Identifier.of(Karambit.MOD_ID, "boat/rosewater"), "main");
+        EntityModelLayerRegistry.registerModelLayer(rosewaterModelLayer, BoatEntityModel::getTexturedModelData);
+        EntityRendererRegistry.register(KarambitBoats.ROSEWATER.boat, context -> new BoatEntityRenderer(context, rosewaterModelLayer));
+
+        var rosewaterChestModelLayer = new EntityModelLayer(Identifier.of(Karambit.MOD_ID, "chest_boat/rosewater"), "main");
+        EntityModelLayerRegistry.registerModelLayer(rosewaterChestModelLayer, BoatEntityModel::getChestTexturedModelData);
+        EntityRendererRegistry.register(KarambitBoats.ROSEWATER.chestBoat, context -> new BoatEntityRenderer(context, rosewaterChestModelLayer));
+
+        var azuriteModelLayer = new EntityModelLayer(Identifier.of(Karambit.MOD_ID, "boat/azurite"), "main");
+        EntityModelLayerRegistry.registerModelLayer(azuriteModelLayer, BoatEntityModel::getTexturedModelData);
+        EntityRendererRegistry.register(KarambitBoats.AZURITE.boat, context -> new BoatEntityRenderer(context, azuriteModelLayer));
+
+        var azuriteChestModelLayer = new EntityModelLayer(Identifier.of(Karambit.MOD_ID, "chest_boat/azurite"), "main");
+        EntityModelLayerRegistry.registerModelLayer(azuriteChestModelLayer, BoatEntityModel::getChestTexturedModelData);
+        EntityRendererRegistry.register(KarambitBoats.AZURITE.chestBoat, context -> new BoatEntityRenderer(context, azuriteChestModelLayer));
     }
 }

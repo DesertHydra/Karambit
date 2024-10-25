@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.7-SNAPSHOT'
+	id 'fabric-loom' version '1.8-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -10,12 +10,11 @@ base {
 	archivesName = project.archives_base_name
 }
 
-repositories {
-	maven {
-		name = 'TerraformersMC'
-		url = 'https://maven.terraformersmc.com/'
-	}
+loom {
+	accessWidenerPath = file("src/main/resources/karambit.accesswidener")
 }
+
+repositories {}
 
 dependencies {
 	// To change the versions see the gradle.properties file
@@ -25,10 +24,6 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-
-	// API for signs
-	modImplementation "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
-	include "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
 }
 
 fabricApi {

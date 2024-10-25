@@ -1,68 +1,56 @@
 package deserthydra.karambit.wood;
 
-import com.terraformersmc.terraform.boat.api.TerraformBoatType;
-import com.terraformersmc.terraform.boat.impl.item.TerraformBoatItem;
 import deserthydra.karambit.registry.KarambitRegistry;
 import deserthydra.karambit.tags.KarambitItemTags;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.HangingSignItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.SignItem;
+import net.minecraft.item.*;
 import net.minecraft.registry.tag.TagKey;
 
 public class WoodItems {
     private final String NAME;
-    private final TerraformBoatType BOAT_TYPE;
 
-    public final BlockItem stem;
-    public final BlockItem hyphae;
-    public final BlockItem planks;
-    public final BlockItem slab;
-    public final BlockItem stairs;
-    public final BlockItem fence;
-    public final BlockItem fenceGate;
-    public final BlockItem door;
-    public final BlockItem button;
-    public final BlockItem pressurePlate;
-    public final SignItem sign;
-    public final HangingSignItem hangingSign;
-    public final BlockItem trapdoor;
-    public final BlockItem strippedStem;
-    public final BlockItem strippedHyphae;
-    public final TerraformBoatItem boat;
-    public final TerraformBoatItem chestBoat;
+    public final Item stem;
+    public final Item hyphae;
+    public final Item planks;
+    public final Item slab;
+    public final Item stairs;
+    public final Item fence;
+    public final Item fenceGate;
+    public final Item door;
+    public final Item button;
+    public final Item pressurePlate;
+    public final Item sign;
+    public final Item hangingSign;
+    public final Item trapdoor;
+    public final Item strippedStem;
+    public final Item strippedHyphae;
+    public final Item boat;
+    public final Item chestBoat;
     public final TagKey<Item> logsTag;
 
-    private WoodItems(String name, WoodBlocks blocks) {
+    private WoodItems(String name, WoodBlocks blocks, WoodBoats boats) {
         this.NAME = name;
 
-        stem = KarambitRegistry.registerBlockItem(name + "_stem", blocks.stem);
-        strippedStem = KarambitRegistry.registerBlockItem("stripped_" + name + "_stem", blocks.strippedStem);
+        stem = KarambitRegistry.registerBlockItem(blocks.stem);
+        strippedStem = KarambitRegistry.registerBlockItem(blocks.strippedStem);
 
-        planks = KarambitRegistry.registerBlockItem(name + "_planks", blocks.planks);
-        slab = KarambitRegistry.registerBlockItem(name + "_slab", blocks.slab);
-        stairs = KarambitRegistry.registerBlockItem(name + "_stairs", blocks.stairs);
-        fence = KarambitRegistry.registerBlockItem(name + "_fence", blocks.fence);
-        fenceGate = KarambitRegistry.registerBlockItem(name + "_fence_gate", blocks.fenceGate);
-        door = KarambitRegistry.registerBlockItem(name + "_door", blocks.door);
-        button = KarambitRegistry.registerBlockItem(name + "_button", blocks.button);
-        pressurePlate = KarambitRegistry.registerBlockItem(name + "_pressure_plate", blocks.pressurePlate);
-        trapdoor = KarambitRegistry.registerBlockItem(name + "_trapdoor", blocks.trapdoor);
-        sign = KarambitRegistry.register(name + "_sign", new SignItem(blocks.sign, blocks.wallSign, new Item.Settings().maxCount(16)));
-        hangingSign = KarambitRegistry.register(name + "_hanging_sign", new HangingSignItem(blocks.hangingSign, blocks.wallHangingSign, new Item.Settings().maxCount(16)));
-
-        BOAT_TYPE = WoodBoats.register(name, planks);
-        if (BOAT_TYPE != null) {
-            boat = (TerraformBoatItem) BOAT_TYPE.getItem();
-            chestBoat = (TerraformBoatItem) BOAT_TYPE.getChestItem();
-        } else {
-            boat = null;
-            chestBoat = null;
-        }
+        planks = KarambitRegistry.registerBlockItem(blocks.planks);
+        slab = KarambitRegistry.registerBlockItem(blocks.slab);
+        stairs = KarambitRegistry.registerBlockItem(blocks.stairs);
+        fence = KarambitRegistry.registerBlockItem(blocks.fence);
+        fenceGate = KarambitRegistry.registerBlockItem(blocks.fenceGate);
+        door = KarambitRegistry.registerBlockItem(blocks.door);
+        button = KarambitRegistry.registerBlockItem(blocks.button);
+        pressurePlate = KarambitRegistry.registerBlockItem(blocks.pressurePlate);
+        trapdoor = KarambitRegistry.registerBlockItem(blocks.trapdoor);
+        // TODO - Fix me!
+        sign = KarambitRegistry.register(blocks.sign, (block, settings) -> new SignItem(block, blocks.wallSign, settings), new Item.Settings().maxCount(16));
+        hangingSign = KarambitRegistry.register(blocks.hangingSign, (block, settings) -> new SignItem(block, blocks.wallHangingSign, settings), new Item.Settings().maxCount(16));
+        boat = KarambitRegistry.register(name + "_boat", settings -> new BoatItem(boats.boat, settings), new Item.Settings());
+        chestBoat = KarambitRegistry.register(name + "_chest_boat", settings -> new BoatItem(boats.chestBoat, settings), new Item.Settings());
 
         if (blocks.hasHyphae()) {
-            hyphae = KarambitRegistry.registerBlockItem(name + "_hyphae", blocks.hyphae);
-            strippedHyphae = KarambitRegistry.registerBlockItem("stripped_" + name + "_hyphae", blocks.strippedHyphae);
+            hyphae = KarambitRegistry.registerBlockItem(blocks.hyphae);
+            strippedHyphae = KarambitRegistry.registerBlockItem(blocks.strippedHyphae);
             logsTag = KarambitItemTags.of(name + "_stems");
         } else {
             hyphae = null;
@@ -71,8 +59,8 @@ public class WoodItems {
         }
     }
 
-    public static WoodItems register(String name, WoodBlocks blocks) {
-        return new WoodItems(name, blocks);
+    public static WoodItems register(String name, WoodBlocks blocks, WoodBoats boats) {
+        return new WoodItems(name, blocks, boats);
     }
 
     public String getName() {
@@ -84,6 +72,6 @@ public class WoodItems {
     }
 
     public boolean hasBoat() {
-        return (BOAT_TYPE != null && boat != null && chestBoat != null);
+        return (boat != null && chestBoat != null);
     }
 }

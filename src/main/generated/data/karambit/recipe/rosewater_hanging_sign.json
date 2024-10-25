@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "hanging_sign",
   "key": {
-    "#": {
-      "item": "karambit:stripped_rosewater_stem"
-    },
-    "X": {
-      "item": "minecraft:chain"
-    }
+    "#": "karambit:stripped_rosewater_stem",
+    "X": "minecraft:chain"
   },
   "pattern": [
     "X X",

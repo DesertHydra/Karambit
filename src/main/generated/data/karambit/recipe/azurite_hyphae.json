@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "karambit:azurite_stem"
-    }
+    "#": "karambit:azurite_stem"
   },
   "pattern": [
     "##",
