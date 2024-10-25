@@ -11,7 +11,6 @@ import deserthydra.karambit.tags.KarambitBlockTags;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.registry.tag.TagKey;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
 public class WoodBlocks {
@@ -54,12 +53,12 @@ public class WoodBlocks {
 
         Identifier signTexture = Identifier.of(Karambit.MOD_ID, "entity/signs/" + name);
         sign = KarambitRegistry.register(name + "_sign", new TerraformSignBlock(signTexture, AbstractBlock.Settings.copy(Blocks.CRIMSON_SIGN).mapColor(colors.planks)));
-        wallSign = KarambitRegistry.register(name + "_wall_sign", new TerraformWallSignBlock(signTexture, AbstractBlock.Settings.copy(Blocks.CRIMSON_WALL_SIGN).mapColor(colors.planks).dropsLike(sign)));
+        wallSign = KarambitRegistry.register(name + "_wall_sign", new TerraformWallSignBlock(signTexture, AbstractBlock.Settings.copy(Blocks.CRIMSON_WALL_SIGN).mapColor(colors.planks).lootTable(sign.getLootTableKey())));
 
         Identifier hangingSignTexture = Identifier.of(Karambit.MOD_ID, "entity/signs/hanging/" + name);
         Identifier hangingSignGuiTexture = Identifier.of(Karambit.MOD_ID, "textures/gui/hanging_signs/" + name);
         hangingSign = KarambitRegistry.register(name + "_hanging_sign", new TerraformHangingSignBlock(hangingSignTexture, hangingSignGuiTexture, AbstractBlock.Settings.copy(Blocks.CRIMSON_HANGING_SIGN).mapColor(colors.planks)));
-        wallHangingSign = KarambitRegistry.register(name + "_wall_hanging_sign", new TerraformWallHangingSignBlock(hangingSignTexture, hangingSignGuiTexture, AbstractBlock.Settings.copy(Blocks.CRIMSON_WALL_HANGING_SIGN).mapColor(colors.planks).dropsLike(hangingSign)));
+        wallHangingSign = KarambitRegistry.register(name + "_wall_hanging_sign", new TerraformWallHangingSignBlock(hangingSignTexture, hangingSignGuiTexture, AbstractBlock.Settings.copy(Blocks.CRIMSON_WALL_HANGING_SIGN).mapColor(colors.planks).lootTable(hangingSign.getLootTableKey())));
 
         stem = KarambitRegistry.register(name + "_stem", PillarLogHelper.ofNether(colors.planks, colors.bark));
         strippedStem = KarambitRegistry.register("stripped_" + name + "_stem",  PillarLogHelper.ofNether(colors.planks));

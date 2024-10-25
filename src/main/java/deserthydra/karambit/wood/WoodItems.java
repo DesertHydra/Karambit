@@ -48,7 +48,7 @@ public class WoodItems {
         button = KarambitRegistry.registerBlockItem(name + "_button", blocks.button);
         pressurePlate = KarambitRegistry.registerBlockItem(name + "_pressure_plate", blocks.pressurePlate);
         trapdoor = KarambitRegistry.registerBlockItem(name + "_trapdoor", blocks.trapdoor);
-        sign = KarambitRegistry.register(name + "_sign", new SignItem(new Item.Settings().maxCount(16), blocks.sign, blocks.wallSign));
+        sign = KarambitRegistry.register(name + "_sign", new SignItem(blocks.sign, blocks.wallSign, new Item.Settings().maxCount(16)));
         hangingSign = KarambitRegistry.register(name + "_hanging_sign", new HangingSignItem(blocks.hangingSign, blocks.wallHangingSign, new Item.Settings().maxCount(16)));
 
         BOAT_TYPE = WoodBoats.register(name, planks);
