@@ -1,26 +1,35 @@
 package deserthydra.karambit.wood;
 
-import com.terraformersmc.terraform.boat.api.TerraformBoatType;
-import com.terraformersmc.terraform.boat.api.TerraformBoatTypeRegistry;
-import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
-import deserthydra.karambit.Karambit;
-import net.minecraft.item.BlockItem;
-import net.minecraft.registry.Registry;
+import deserthydra.karambit.registry.KarambitItems;
+import deserthydra.karambit.registry.KarambitRegistry;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.vehicle.BoatEntity;
+import net.minecraft.entity.vehicle.ChestBoatEntity;
+import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryKey;
-import net.minecraft.util.Identifier;
 
 public class WoodBoats {
-    public static TerraformBoatType register(String path, BlockItem planks) {
-        Identifier typeId = Identifier.of(Karambit.MOD_ID, path);
-        Identifier boatId = Identifier.of(Karambit.MOD_ID, path + "_boat");
-        Identifier chestId = Identifier.of(Karambit.MOD_ID, path + "_chest_boat");
-        RegistryKey<TerraformBoatType> boatKey = TerraformBoatTypeRegistry.createKey(typeId);
+    public final EntityType<BoatEntity> boat;
+    public final EntityType<ChestBoatEntity> chestBoat;
 
-        return Registry.register(TerraformBoatTypeRegistry.INSTANCE, typeId,
-                new TerraformBoatType.Builder()
-                        .item(TerraformBoatItemHelper.registerBoatItem(boatId, boatKey, false))
-                        .chestItem(TerraformBoatItemHelper.registerBoatItem(chestId, boatKey, true))
-                        .planks(planks)
-                        .build());
+    public WoodBoats(String name, WoodItems items) {
+        this.boat = KarambitRegistry.register(
+                name + "_boat",
+                EntityType.Builder.create(EntityType.getBoatFactory(() -> items.boat), SpawnGroup.MISC)
+                        .dropsNothing()
+                        .dimensions(1.375F, 0.5625F)
+                        .eyeHeight(0.5625F)
+                        .maxTrackingRange(10)
+        );
+
+        this.chestBoat = KarambitRegistry.register(
+                name + "_chest_boat",
+                EntityType.Builder.create(EntityType.getChestBoatFactory(() -> items.chestBoat), SpawnGroup.MISC)
+                        .dropsNothing()
+                        .dimensions(1.375F, 0.5625F)
+                        .eyeHeight(0.5625F)
+                        .maxTrackingRange(10)
+        );
     }
 }

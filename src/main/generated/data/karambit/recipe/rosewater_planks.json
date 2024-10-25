@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "karambit:rosewater_stems"
-    }
+    "#karambit:rosewater_stems"
   ],
   "result": {
     "count": 4,

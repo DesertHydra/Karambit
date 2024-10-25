@@ -9,7 +9,7 @@ public class KarambitItems {
     public static WoodItems AZURITE;
 
     public static void init() {
-        ROSEWATER = WoodItems.register("rosewater", KarambitBlocks.ROSEWATER);
-        AZURITE = WoodItems.register("azurite", KarambitBlocks.AZURITE);
+        ROSEWATER = WoodItems.register("rosewater", KarambitBlocks.ROSEWATER, KarambitBoats.ROSEWATER);
+        AZURITE = WoodItems.register("azurite", KarambitBlocks.AZURITE, KarambitBoats.AZURITE);
     }
 }

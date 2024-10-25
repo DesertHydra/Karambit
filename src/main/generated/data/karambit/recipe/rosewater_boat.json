@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "boat",
   "key": {
-    "#": {
-      "item": "karambit:rosewater_planks"
-    }
+    "#": "karambit:rosewater_planks"
   },
   "pattern": [
     "# #",

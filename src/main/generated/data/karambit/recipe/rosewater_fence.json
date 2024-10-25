@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "wooden_fence",
   "key": {
-    "#": {
-      "item": "minecraft:stick"
-    },
-    "W": {
-      "item": "karambit:rosewater_planks"
-    }
+    "#": "minecraft:stick",
+    "W": "karambit:rosewater_planks"
   },
   "pattern": [
     "W#W",

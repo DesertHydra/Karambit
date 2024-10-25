@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "karambit:rosewater_stem"
-    }
+    "#": "karambit:rosewater_stem"
   },
   "pattern": [
     "##",

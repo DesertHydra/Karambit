@@ -2,6 +2,7 @@ package deserthydra.karambit;
 
 import deserthydra.karambit.mixin.ItemAccessor;
 import deserthydra.karambit.registry.KarambitBlocks;
+import deserthydra.karambit.registry.KarambitBoats;
 import deserthydra.karambit.registry.KarambitItems;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
@@ -31,6 +32,7 @@ public class Karambit implements ModInitializer {
 
 	private static void register() {
 		KarambitBlocks.init();
+		KarambitBoats.init();
 		KarambitItems.init();
 	}
 
