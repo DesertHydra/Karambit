@@ -30,6 +30,11 @@ public class Karambit implements ModInitializer {
 		return Identifier.of(MOD_ID, path);
 	}
 
+	@NotNull
+	public static ResourceLocation id(@NotNull String path) {
+		return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+	}
+
 	private static void register() {
 		KarambitBlocks.init();
 		KarambitBoats.init();

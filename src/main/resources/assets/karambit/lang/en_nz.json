@@ -113,9 +113,14 @@
 
   "item.minecraft.acacia_boat": "Bulnesia Boat",
   "item.minecraft.acacia_chest_boat": "Bulnesia Boat with Chest",
+  "entity.minecraft.acacia_chest_boat": "Bulnesia Boat with Chest",
 
   "item.minecraft.cherry_boat": "Purpleheart Boat",
   "item.minecraft.cherry_chest_boat": "Purpleheart Boat with Chest",
+  "entity.minecraft.cherry_chest_boat": "Purpleheart Boat with Chest",
+
+  "entity.karambit.rosewater_chest_boat": "Rosewater Boat with Chest",
+  "entity.karambit.azurite_chest_boat": "Azurite Boat with Chest",
 
   "tag.item.karambit.rosewater_stems": "Rosewater Stems",
   "tag.item.karambit.azurite_stems": "Azurite Stems",
