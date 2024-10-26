@@ -46,20 +46,20 @@ public class KarambitRegistry {
     }
 
     public static <B extends Block> B register(String name, B block) {
-        return Registry.register(Registries.BLOCK, Identifier.of(Karambit.MOD_ID, name), block);
+        return Registry.register(Registries.BLOCK, Karambit.id(name), block);
     }
 
     public static <B extends Block> B register(String name, Function<AbstractBlock.Settings, B> factory, AbstractBlock.Settings settings) {
-        var key = RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Karambit.MOD_ID, name));
+        var key = RegistryKey.of(RegistryKeys.BLOCK, Karambit.id(name));
         return Registry.register(Registries.BLOCK, key, factory.apply(settings.registryKey(key)));
     }
 
     public static <E extends Entity> EntityType<E> register(String name, EntityType.Builder<E> entityType) {
         return Registry.register(
                 Registries.ENTITY_TYPE,
-                Identifier.of(Karambit.MOD_ID, name),
+                Karambit.id(name),
                 entityType.build(
-                        RegistryKey.of(RegistryKeys.ENTITY_TYPE, Identifier.of(Karambit.MOD_ID, name))
+                        RegistryKey.of(RegistryKeys.ENTITY_TYPE, Karambit.id(name))
                 )
         );
     }
