@@ -4,6 +4,7 @@ import deserthydra.karambit.mixin.ItemAccessor;
 import deserthydra.karambit.registry.KarambitBlocks;
 import deserthydra.karambit.registry.KarambitBoats;
 import deserthydra.karambit.registry.KarambitItems;
+import deserthydra.karambit.registry.KarambitWood;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.minecraft.item.Items;
@@ -30,12 +31,8 @@ public class Karambit implements ModInitializer {
 		return Identifier.of(MOD_ID, path);
 	}
 
-	@NotNull
-	public static ResourceLocation id(@NotNull String path) {
-		return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
-	}
-
 	private static void register() {
+		KarambitWood.init();
 		KarambitBlocks.init();
 		KarambitBoats.init();
 		KarambitItems.init();
