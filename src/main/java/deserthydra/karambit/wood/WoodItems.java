@@ -46,8 +46,6 @@ public class WoodItems {
         sign = KarambitRegistry.register(blocks.sign, (block, settings) -> new SignItem(block, blocks.wallSign, settings), new Item.Settings().maxCount(16));
         hangingSign = KarambitRegistry.register(blocks.hangingSign, (block, settings) -> new HangingSignItem(block, blocks.wallHangingSign, settings), new Item.Settings().maxCount(16));
 
-
-
         boat = KarambitRegistry.register(name + "_boat", settings -> new BoatItem(boats.boat, settings), new Item.Settings());
         chestBoat = KarambitRegistry.register(name + "_chest_boat", settings -> new BoatItem(boats.chestBoat, settings), new Item.Settings());
 

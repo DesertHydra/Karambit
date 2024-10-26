@@ -2,6 +2,7 @@ package deserthydra.karambit.registry;
 
 import deserthydra.karambit.wood.WoodBlocks;
 import deserthydra.karambit.wood.WoodColors;
+import deserthydra.karambit.wood.WoodWood;
 
 @SuppressWarnings("WeakerAccess")
 public class KarambitBlocks {
@@ -9,7 +10,7 @@ public class KarambitBlocks {
     public static WoodBlocks AZURITE;
 
     public static void init() {
-        ROSEWATER = WoodBlocks.register("rosewater", WoodColors.ROSEWATER);
-        AZURITE = WoodBlocks.register("azurite", WoodColors.AZURITE);
+        ROSEWATER = WoodBlocks.register("rosewater", WoodColors.ROSEWATER, KarambitWood.ROSEWATER);
+        AZURITE = WoodBlocks.register("azurite", WoodColors.AZURITE, KarambitWood.AZURITE);
     }
 }

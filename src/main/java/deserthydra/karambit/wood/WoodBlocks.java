@@ -34,11 +34,8 @@ public class WoodBlocks {
     public final Block strippedStem;
     public final Block strippedHyphae;
     public final TagKey<Block> logsTag;
-    public static final WoodType AZURITE_WOOD_TYPE = WoodTypeBuilder.copyOf(WoodType.CRIMSON).register(Karambit.id("azurite")), AZURITE_SET);
-    public static final WoodType ROSEWATER_WOOD_TYPE = WoodTypeBuilder.copyOf(WoodType.CRIMSON).register(Karambit.id("rosewater")), ROSEWATER_SET);
 
-
-    private WoodBlocks(String name, WoodColors colors) {
+    private WoodBlocks(String name, WoodColors colors, WoodWood wood) {
         this.NAME = name;
         this.COLORS = colors;
 
@@ -52,16 +49,10 @@ public class WoodBlocks {
         pressurePlate = KarambitRegistry.register(name + "_pressure_plate", settings -> new PressurePlateBlock(BlockSetType.CRIMSON, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_PRESSURE_PLATE).mapColor(colors.planks));
         trapdoor = KarambitRegistry.register(name + "_trapdoor", settings -> new TrapdoorBlock(BlockSetType.CRIMSON, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_TRAPDOOR).mapColor(colors.planks));
 
-        sign = KarambitRegistry.register("azurite_sign", settings -> new SignBlock(AZURITE_WOOD_TYPE, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_SIGN).mapColor(colors.planks));
-        wallSign = KarambitRegistry.register( "azurite_wall_sign", settings -> new WallSignBlock(AZURITE_WOOD_TYPE, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_WALL_SIGN).mapColor(colors.planks).lootTable(sign.getLootTableKey()));
-        hangingSign = KarambitRegistry.register(  "azurite_hanging_sign", settings -> new HangingSignBlock(AZURITE_WOOD_TYPE, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_HANGING_SIGN).mapColor(colors.planks));
-        wallHangingSign = KarambitRegistry.register(  "azurite_wall_hanging_sign", settings -> new WallHangingSignBlock(AZURITE_WOOD_TYPE, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_WALL_HANGING_SIGN).mapColor(colors.planks).lootTable(hangingSign.getLootTableKey()));
-
-        sign = KarambitRegistry.register( "rosewater_sign", settings -> new SignBlock(ROSEWATER_WOOD_TYPE, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_SIGN).mapColor(colors.planks));
-        wallSign = KarambitRegistry.register(  "rosewater_wall_sign", settings -> new WallSignBlock(ROSEWATER_WOOD_TYPE, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_WALL_SIGN).mapColor(colors.planks).lootTable(sign.getLootTableKey()));
-        hangingSign = KarambitRegistry.register("rosewater_hanging_sign", settings -> new HangingSignBlock(ROSEWATER_WOOD_TYPE, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_HANGING_SIGN).mapColor(colors.planks));
-        wallHangingSign = KarambitRegistry.register( "rosewater_wall_hanging_sign", settings -> new WallHangingSignBlock(ROSEWATER_WOOD_TYPE, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_WALL_HANGING_SIGN).mapColor(colors.planks).lootTable(hangingSign.getLootTableKey()));
-
+        sign = KarambitRegistry.register(name + "_sign", settings -> new SignBlock(wood.woodType, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_SIGN).mapColor(colors.planks));
+        wallSign = KarambitRegistry.register( name + "_wall_sign", settings -> new WallSignBlock(wood.woodType, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_WALL_SIGN).mapColor(colors.planks).lootTable(sign.getLootTableKey()));
+        hangingSign = KarambitRegistry.register(  name + "_hanging_sign", settings -> new HangingSignBlock(wood.woodType, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_HANGING_SIGN).mapColor(colors.planks));
+        wallHangingSign = KarambitRegistry.register(  name + "_wall_hanging_sign", settings -> new WallHangingSignBlock(wood.woodType, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_WALL_HANGING_SIGN).mapColor(colors.planks).lootTable(hangingSign.getLootTableKey()));
 
         stem = KarambitRegistry.register(name + "_stem", PillarBlock::new, Blocks.createNetherStemSettings(colors.bark));
         strippedStem = KarambitRegistry.register("stripped_" + name + "_stem", PillarBlock::new, Blocks.createNetherStemSettings(colors.bark));
@@ -72,8 +63,8 @@ public class WoodBlocks {
 
     }
 
-    public static WoodBlocks register(String name, WoodColors colors) {
-        WoodBlocks blocks = new WoodBlocks(name, colors);
+    public static WoodBlocks register(String name, WoodColors colors, WoodWood wood) {
+        WoodBlocks blocks = new WoodBlocks(name, colors, wood);
         blocks.addStrippables();
         return blocks;
     }
