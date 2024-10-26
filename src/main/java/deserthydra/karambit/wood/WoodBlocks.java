@@ -1,10 +1,13 @@
 package deserthydra.karambit.wood;
 
+import deserthydra.karambit.Karambit;
 import deserthydra.karambit.registry.KarambitRegistry;
 import deserthydra.karambit.tags.KarambitBlockTags;
+import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.NoteBlockInstrument;
+import net.minecraft.item.Item;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.BlockSoundGroup;
 
@@ -31,6 +34,9 @@ public class WoodBlocks {
     public final Block strippedStem;
     public final Block strippedHyphae;
     public final TagKey<Block> logsTag;
+    public static final WoodType AZURITE_WOOD_TYPE = WoodTypeBuilder.copyOf(WoodType.CRIMSON).register(Karambit.id("azurite")), AZURITE_SET);
+    public static final WoodType ROSEWATER_WOOD_TYPE = WoodTypeBuilder.copyOf(WoodType.CRIMSON).register(Karambit.id("rosewater")), ROSEWATER_SET);
+
 
     private WoodBlocks(String name, WoodColors colors) {
         this.NAME = name;
@@ -46,11 +52,16 @@ public class WoodBlocks {
         pressurePlate = KarambitRegistry.register(name + "_pressure_plate", settings -> new PressurePlateBlock(BlockSetType.CRIMSON, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_PRESSURE_PLATE).mapColor(colors.planks));
         trapdoor = KarambitRegistry.register(name + "_trapdoor", settings -> new TrapdoorBlock(BlockSetType.CRIMSON, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_TRAPDOOR).mapColor(colors.planks));
 
-        sign = KarambitRegistry.register(name + "_sign", settings -> new SignBlock(WoodType.CRIMSON, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_SIGN).mapColor(colors.planks));
-        wallSign = KarambitRegistry.register(name + "_wall_sign", settings -> new WallSignBlock(WoodType.CRIMSON, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_WALL_SIGN).mapColor(colors.planks).lootTable(sign.getLootTableKey()));
+        sign = KarambitRegistry.register("azurite_sign", settings -> new SignBlock(AZURITE_WOOD_TYPE, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_SIGN).mapColor(colors.planks));
+        wallSign = KarambitRegistry.register( "azurite_wall_sign", settings -> new WallSignBlock(AZURITE_WOOD_TYPE, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_WALL_SIGN).mapColor(colors.planks).lootTable(sign.getLootTableKey()));
+        hangingSign = KarambitRegistry.register(  "azurite_hanging_sign", settings -> new HangingSignBlock(AZURITE_WOOD_TYPE, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_HANGING_SIGN).mapColor(colors.planks));
+        wallHangingSign = KarambitRegistry.register(  "azurite_wall_hanging_sign", settings -> new WallHangingSignBlock(AZURITE_WOOD_TYPE, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_WALL_HANGING_SIGN).mapColor(colors.planks).lootTable(hangingSign.getLootTableKey()));
 
-        hangingSign = KarambitRegistry.register(name + "_hanging_sign", settings -> new HangingSignBlock(WoodType.CRIMSON, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_HANGING_SIGN).mapColor(colors.planks));
-        wallHangingSign = KarambitRegistry.register(name + "_wall_hanging_sign", settings -> new WallHangingSignBlock(WoodType.CRIMSON, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_WALL_HANGING_SIGN).mapColor(colors.planks).lootTable(hangingSign.getLootTableKey()));
+        sign = KarambitRegistry.register( "rosewater_sign", settings -> new SignBlock(ROSEWATER_WOOD_TYPE, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_SIGN).mapColor(colors.planks));
+        wallSign = KarambitRegistry.register(  "rosewater_wall_sign", settings -> new WallSignBlock(ROSEWATER_WOOD_TYPE, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_WALL_SIGN).mapColor(colors.planks).lootTable(sign.getLootTableKey()));
+        hangingSign = KarambitRegistry.register("rosewater_hanging_sign", settings -> new HangingSignBlock(ROSEWATER_WOOD_TYPE, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_HANGING_SIGN).mapColor(colors.planks));
+        wallHangingSign = KarambitRegistry.register( "rosewater_wall_hanging_sign", settings -> new WallHangingSignBlock(ROSEWATER_WOOD_TYPE, settings), AbstractBlock.Settings.copy(Blocks.CRIMSON_WALL_HANGING_SIGN).mapColor(colors.planks).lootTable(hangingSign.getLootTableKey()));
+
 
         stem = KarambitRegistry.register(name + "_stem", PillarBlock::new, Blocks.createNetherStemSettings(colors.bark));
         strippedStem = KarambitRegistry.register("stripped_" + name + "_stem", PillarBlock::new, Blocks.createNetherStemSettings(colors.bark));
