@@ -1,4 +1,5 @@
-{
+{ "itemgroup.karambit_item_group": "Karambit",
+
   "block.karambit.rosewater_stem": "Rosewater Stem",
   "block.karambit.rosewater_hyphae": "Rosewater Hyphae",
   "block.karambit.stripped_rosewater_stem": "Stripped Rosewater Stem",
@@ -12,8 +13,8 @@
   "block.karambit.rosewater_trapdoor": "Rosewater Trapdoor",
   "block.karambit.rosewater_pressure_plate": "Rosewater Pressure Plate",
   "block.karambit.rosewater_button": "Rosewater Button",
-  "block.karambit.rosewater_sign": "Rosewater Sign",
-  "block.karambit.rosewater_hanging_sign": "Rosewater Hanging Sign",
+  "item.karambit.rosewater_sign": "Rosewater Sign",
+  "item.karambit.rosewater_hanging_sign": "Rosewater Hanging Sign",
   "item.karambit.rosewater_boat": "Rosewater Boat",
   "item.karambit.rosewater_chest_boat": "Rosewater Boat with Chest",
 
@@ -30,8 +31,8 @@
   "block.karambit.azurite_trapdoor": "Azurite Trapdoor",
   "block.karambit.azurite_pressure_plate": "Azurite Pressure Plate",
   "block.karambit.azurite_button": "Azurite Button",
-  "block.karambit.azurite_sign": "Azurite Sign",
-  "block.karambit.azurite_hanging_sign": "Azurite Hanging Sign",
+  "item.karambit.azurite_sign": "Azurite Sign",
+  "item.karambit.azurite_hanging_sign": "Azurite Hanging Sign",
   "item.karambit.azurite_boat": "Azurite Boat",
   "item.karambit.azurite_chest_boat": "Azurite Boat with Chest",
 
