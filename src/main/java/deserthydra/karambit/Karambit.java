@@ -10,6 +10,8 @@ import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fabricmc.fabric.mixin.transfer.ItemStackAccessor;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.phys.HitResult;
 
@@ -29,37 +31,6 @@ public class Karambit implements ModInitializer {
 
         StrippableBlockRegistry.register(KarambitBlocks.ROSEWATER_HYPHAE, KarambitBlocks.STRIPPED_ROSEWATER_HYPHAE);
         StrippableBlockRegistry.register(KarambitBlocks.AZURITE_HYPHAE, KarambitBlocks.STRIPPED_AZURITE_HYPHAE);
-
-        var washableToWashedMap = Map.ofEntries(
-                Map.entry(Items.CRIMSON_STEM, KarambitBlocks.ROSEWATER_STEM));
-
-        for (var entry: washableToWashedMap.entrySet()) {
-            UseItemCallback.EVENT.register(((player, level, hand) -> {
-                var stack = player.getItemInHand(hand);
-                if (stack.is(entry.getKey())) {
-                    var blockHitResult = ItemStackAccessor.callRaycast(world, player, RaycastContext.FluidHandling.SOURCE_ONLY);
-                    if (blockHitResult.getType() == HitResult.Type.BLOCK) {
-                        var blockPos = blockHitResult.getBlockPos();
-                        if (!level.canPlayerModifyAt(player, blockPos)) {
-                            return ActionResult.PASS;
-                        }
-
-                        if (world.getFluidState(blockPos).isIn(FluidTags.WATER)) {
-                            world.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.NEUTRAL, 1.0F, 1.0F);
-                            if (!player.getAbilities().creativeMode) {
-                                stack.decrement(1);
-                            }
-                            player.setStackInHand(hand, stack);
-                            player.getInventory().offerOrDrop(entry.getValue().getDefaultStack());
-                            return ActionResult.SUCCESS;
-                        }
-                    }
-                }
-
-                return ActionResult.PASS;
-
-            }));
-        }
 
 
     }
