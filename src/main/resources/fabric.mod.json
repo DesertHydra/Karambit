@@ -24,7 +24,7 @@
 		"client": ["deserthydra.karambit.KarambitClient"],
 		"fabric-datagen": ["deserthydra.karambit.KarambitDataGenerator"]
 	},
-	"mixins": [],
+	"mixins": ["karambit.mixins.json"],
 	"accessWidener": "karambit.accesswidener",
 	"depends": {
 		"fabricloader": ">=0.19.3",
