@@ -18,6 +18,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.phys.HitResult;
 
@@ -46,30 +47,30 @@ public class Karambit implements ModInitializer {
             UseItemCallback.EVENT.register(((player, level, hand) -> {
                 var stack = player.getItemInHand(hand);
                 if (stack.is(entry.getKey())) {
-                    var blockHitResult = ItemAccessor.callRaycast(level, player, RaycastContext.FluidHandling.SOURCE_ONLY);
+                    var blockHitResult = ItemAccessor.karambit$getPlayerPOVHitResult(level, player, ClipContext.Fluid.SOURCE_ONLY);
                     if (blockHitResult.getType() == HitResult.Type.BLOCK) {
                         var blockPos = blockHitResult.getBlockPos();
-                        if (!level.canPlayerModifyAt(player, blockPos)) {
+                        if (!level.mayInteract(player, blockPos)) {
                             return InteractionResult.PASS;
                         }
 
                         if (level.getFluidState(blockPos).is(FluidTags.WATER)) {
                             level.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.LAVA_EXTINGUISH, SoundSource.NEUTRAL, 1.0F, 1.0F);
                             if (!player.isCreative()) {
-                                heldItem.shrink(1);
+                                player.getItemInHand(hand).shrink(1);
                             }
-                            player.getInventory().offerOrDrop(entry.getValue().getDefaultStack());
+                            player.getInventory().placeItemBackInInventory(entry.getValue().asItem().getDefaultInstance());
                             return InteractionResult.SUCCESS;
                         }
                     }
                 }
 
                 return InteractionResult.PASS;
-            });
+            }));
         }
 
-
     }
+
 
     private static void registerSignBlocks() {
         FabricBlockEntityType sign = (FabricBlockEntityType) BuiltInRegistries.BLOCK_ENTITY_TYPE.getValue(Identifier.withDefaultNamespace("sign"));

@@ -17,7 +17,7 @@ loom {
 		}
 	}
 
-	accessWidenerPath = file("src/main/resources/karambit.accesswidener")
+	accessWidenerPath = file("src/main/resources/karambit.classtweaker")
 }
 
 repositories {}
